@@ -37,17 +37,17 @@ exports.get_resto = (req, res, next) => {
 exports.update = (req, res, next) => {
   Restaurant.findById(req.params.id, (err, resto) => {
     if(err) res.send(err);
+    else {
+      resto.name = req.body.name || resto.name;
+      resto.owner = req.body.owner || resto.owner;
+      resto.address = req.body.address || resto.address;
+      resto.open_status = req.body.open_status || resto.open_status;
 
-    resto.name = req.body.name || resto.name;
-    resto.owner = req.body.owner || resto.owner;
-    resto.address = req.body.address || resto.address;
-    resto.open_status = req.body.open_status || resto.open_status;
-
-    resto.save( (err, resto) => {
-      if(err) res.send(err)
-      res.send(resto);
-    })
-
+      resto.save( (err, resto) => {
+        if(err) res.send(err)
+        res.send(resto);
+      })
+    }
   })
 }
 

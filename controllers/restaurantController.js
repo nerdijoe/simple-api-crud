@@ -25,6 +25,7 @@ exports.get_restos = (req, res, next) => {
   })
 }
 
+// get only one resto
 exports.get_resto = (req, res, next) => {
   Restaurant.findById(req.params.id, (err, resto) => {
     if(err) res.send(err);

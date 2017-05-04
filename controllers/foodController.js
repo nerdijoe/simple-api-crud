@@ -53,13 +53,14 @@ exports.update = (req, res, next) => {
 exports.delete = (req, res, next) => {
   Food.findByIdAndRemove( req.params.id, (err, food) => {
     if(err) res.send(err);
-    
-    var message = {
-      message: "Food has been deleted.",
-      id: food._id
-    }
+    else {
+      var message = {
+        message: "Food has been deleted.",
+        id: food._id
+      }
 
-    res.send(message);
+      res.send(message);
+    }
   })
 }
 //

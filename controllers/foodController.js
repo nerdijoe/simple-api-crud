@@ -24,6 +24,7 @@ exports.get_foods = (req, res, next) => {
   })
 }
 
+// get only one food
 exports.get_food = (req, res, next) => {
   Food.findById(req.params.id, (err, food) => {
     if(err) res.send(err);
@@ -63,4 +64,3 @@ exports.delete = (req, res, next) => {
     }
   })
 }
-//
